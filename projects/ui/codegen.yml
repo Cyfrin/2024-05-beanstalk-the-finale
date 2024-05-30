@@ -1,0 +1,24 @@
+overwrite: true
+generates:
+  ./src/generated/graphql.tsx:
+    documents: "src/**/*.graphql"
+    schema:
+      - src/graph/schema-beanstalk.graphql
+      - src/graph/schema-bean.graphql
+      - src/graph/schema-snapshot1.graphql
+      - src/graph/schema-snapshot2.graphql
+      - src/graph/schema-beanft.graphql
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./src/graph/graphql.schema.json:
+    documents: "src/**/*.graphql"
+    schema:
+      - src/graph/schema-beanstalk.graphql
+      - src/graph/schema-bean.graphql
+      - src/graph/schema-snapshot1.graphql
+      - src/graph/schema-snapshot2.graphql
+      - src/graph/schema-beanft.graphql
+    plugins:
+      - "introspection"

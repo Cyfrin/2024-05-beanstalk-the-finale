@@ -1,0 +1,22 @@
+{
+  "name": "beanft",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "rm -rf ./generated && graph codegen",
+    "build": "yarn codegen && graph build",
+    "test": "graph test",
+    "testd": "docker run -it --rm --mount type=bind,source=\"$(pwd)\"/matchstick.yaml.docker,target=/matchstick/matchstick.yaml --mount type=bind,source=\"$(pwd)\"/../../,target=/matchstick/repo-mounted/ matchstick",
+    "testd-named": "../subgraph-core/tests/scripts/docker-run-named.sh",
+    "create-local": "graph create --node http://localhost:8020/ beanft",
+    "remove-local": "graph remove --node http://localhost:8020/ beanft",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 beanft"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.69.0",
+    "@graphprotocol/graph-ts": "0.34.0",
+    "ethers": "^6.3.0"
+  },
+  "devDependencies": {
+    "matchstick-as": "^0.6.0"
+  }
+}
