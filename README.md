@@ -304,7 +304,7 @@ cd 2024-05-beanstalk-the-finale
 Install dependencies:
 
 ```
-cd Beanstalk/protocol
+cd protocol
 yarn
 ```
 
