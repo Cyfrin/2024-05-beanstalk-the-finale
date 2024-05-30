@@ -327,7 +327,7 @@ To run foundry tests:
 
 ```bash
 foundryup
-forge install
+forge install foundry-rs/forge-std
 forge test
 ```
 
