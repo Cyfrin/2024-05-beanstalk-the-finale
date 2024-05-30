@@ -298,6 +298,7 @@ nvm install v16.20.0
 Clone the contest repo:
 ```
 git clone https://github.com/Cyfrin/2024-05-beanstalk-the-finale.git
+cd 2024-05-beanstalk-the-finale
 ```
 
 Install dependencies:
