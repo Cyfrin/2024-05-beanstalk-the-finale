@@ -128,7 +128,7 @@ protocol/
     │   │   ├── L2ContractMigrationFacet.sol
     │   │   ├── PipelineConvertFacet.sol
     │   │   ├── SiloFacet/
-    │   │   │   ├── Silo.sol
+    |   |   |   |-- ClaimFacet.sol
     │   │   │   ├── SiloFacet.sol
     │   │   │   ├── SiloGettersFacet.sol
     │   │   │   └── TokenSilo.sol
@@ -146,7 +146,6 @@ protocol/
     │       └── SeasonFacet/
     │           ├── Distribution.sol
     │           ├── Oracle.sol
-    │           ├── Receiving.sol
     │           ├── SeasonFacet.sol
     │           ├── SeasonGettersFacet.sol
     │           ├── Sun.sol
