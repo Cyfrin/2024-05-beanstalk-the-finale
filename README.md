@@ -347,3 +347,4 @@ All findings in the following resources are considered known issues:
   - [Beanstalk Codehawks Part 1](https://www.codehawks.com/report/clsxlpte900074r5et7x6kh96);
   - [Beanstalk Codehawks Part 2](https://www.codehawks.com/report/clu7665bs0001fmt5yahc8tyh); and
   - [Beanstalk Codehawks Part 3](https://www.codehawks.com/contests/clvo5kwin00078k6jhhjobn22).
+- Additional Known Issues as detected by LightChaser available [here](https://github.com/Cyfrin/2024-05-beanstalk-the-finale/issues/1)
