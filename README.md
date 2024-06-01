@@ -53,6 +53,12 @@ You can read an overview of how Beanstalk works [here](https://docs.bean.money/a
 
 The following contracts are in scope.
 
+In summary:
+* Everything in `beanstalk/*` is in scope except for contracts in `beanstalk/init/`. Contracts in `beanstalk/init/reseed/` **ARE** in scope.
+* Everything in `ecosystem`, except for contracts in `ecosystem/root/`.
+* Everything in `libraries/*` is in scope except for `libraries/Silo/LibLegacyWhitelist.sol`.
+* Everything in `tokens/*` is in scope except for `UnripeBean.sol` and `UnripeBean3Crv.sol`.
+
 The [Beanstalk 3 PR](https://github.com/BeanstalkFarms/Beanstalk/pull/909/files) on the public Beanstalk GitHub repo may be a useful reference for determining which code is new and unaudited.
 
 ```js
@@ -121,7 +127,7 @@ protocol/
     │   │   ├── L2ContractMigrationFacet.sol
     │   │   ├── PipelineConvertFacet.sol
     │   │   ├── SiloFacet/
-    |   |   |   |-- ClaimFacet.sol
+    │   │   │   ├── Silo.sol
     │   │   │   ├── SiloFacet.sol
     │   │   │   ├── SiloGettersFacet.sol
     │   │   │   └── TokenSilo.sol
@@ -184,12 +190,14 @@ protocol/
     │   ├── LibLockedUnderlying.sol
     │   ├── LibMarket.sol
     │   ├── LibPRBMathRoundable.sol
+    │   ├── LibReceiving.sol
     │   ├── LibRedundantMath128.sol
     │   ├── LibRedundantMath256.sol
     │   ├── LibRedundantMath32.sol
     │   ├── LibRedundantMathSigned128.sol
     │   ├── LibRedundantMathSigned256.sol
     │   ├── LibRedundantMathSigned96.sol
+    │   ├── LibShipping.sol
     │   ├── LibTractor.sol
     │   ├── LibUnripe.sol
     │   ├── Minting/
@@ -205,6 +213,7 @@ protocol/
     │   │   ├── LibWstethEthOracle.sol
     │   │   └── LibWstethUsdOracle.sol
     │   ├── Silo/
+    │   │   ├── LibFlood.sol
     │   │   ├── LibGerminate.sol
     │   │   ├── LibSilo.sol
     │   │   ├── LibSiloPermit.sol
