@@ -53,12 +53,6 @@ You can read an overview of how Beanstalk works [here](https://docs.bean.money/a
 
 The following contracts are in scope.
 
-In summary:
-* Everything in `beanstalk/*` is in scope except for contracts in `beanstalk/init/`. Contracts in `beanstalk/init/reseed/` **ARE** in scope.
-* Everything in `ecosystem`, except for contracts in `ecosystem/root/`.
-* Everything in `libraries/*` is in scope except for `libraries/Silo/LibLegacyWhitelist.sol`.
-* Everything in `tokens/*` is in scope except for `UnripeBean.sol` and `UnripeBean3Crv.sol`.
-
 The [Beanstalk 3 PR](https://github.com/BeanstalkFarms/Beanstalk/pull/909/files) on the public Beanstalk GitHub repo may be a useful reference for determining which code is new and unaudited.
 
 ```js
@@ -127,7 +121,6 @@ protocol/
     │   │   ├── L2ContractMigrationFacet.sol
     │   │   ├── PipelineConvertFacet.sol
     │   │   ├── SiloFacet/
-    │   │   │   ├── Silo.sol
     │   │   │   ├── SiloFacet.sol
     │   │   │   ├── SiloGettersFacet.sol
     │   │   │   └── TokenSilo.sol
