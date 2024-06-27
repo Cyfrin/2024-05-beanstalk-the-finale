@@ -1,17 +1,14 @@
 # Beanstalk: The Finale
 
-<p align="center">
-<img src="https://res.cloudinary.com/droqoz7lg/image/upload/q_90/dpr_2.0/c_fill,g_auto,h_320,w_320/f_auto/v1/company/m5oacju1uewfxdifcnfb?_a=BATAUVAA0" width="500" alt="Beanstalk">
-</p>
+[//]: # (contest-details-open)
 
-# Contest Details
-
-### Prize Pool
+## Contest Details
 
 - Total Pool - $250,000
 - H/M - $220,000
 - Low - $10,000
 - Community Judging - $20,000
+  
 - Starts: Monday, May 30, 2024
 - Ends: Monday, July 8, 2024
 
@@ -48,6 +45,45 @@ You can read an overview of how Beanstalk works [here](https://docs.bean.money/a
   - Anyone who holds Fertilizer, the debt asset earned by participating in Beanstalk's recapitalization.
 - Pod holder
   - Anyone who holds Pods, the Beanstalk-native debt asset. Pods are minting when lending Beans to Beanstalk (Sowing Beans).
+
+### Changes
+
+The Beanstalk 3 upgrade includes implementations of:
+
+- [RFC: Generalized Convert](https://github.com/BeanstalkFarms/Beanstalk/issues/716);
+- [RFC: Generalized Flood](https://github.com/BeanstalkFarms/Beanstalk/issues/740);
+- [RFC: Tractor](https://github.com/BeanstalkFarms/Beanstalk/issues/734);
+- [RFC: Secure Beanstalk](https://github.com/BeanstalkFarms/Beanstalk/issues/729), which includes:
+  - Upgrading the test suite to support Foundry;
+  - Upgrading the Solidity version of Beanstalk from 0.7.6 to 0.8.20;
+  - Migrating constants to state that are likely to be adjusted by the DAO in the future;
+- Whitelist v1.1 (discussed later);
+- Field V2 (discussed later); and
+- A series of contracts that can be used to migrate Beanstalk's state to an Ethereum L2.
+
+#### Whitelist v1.1
+
+Whitelisting a Well requires code changes to the Beanstalk contracts. While the changes can potentially be minimal, they ultimately increase the friction associated with whitelisting a Well. Ideally, the DAO can whitelist a Well with the `init` function of a diamond cut.
+
+Thus, we propose to implement a generalized oracle, liquidity weight function and Gauge Point function.
+
+#### Field V2
+
+Beanstalk cannot easily add, modify or remove Yield Distributors, i.e., places where new Bean mints are allocated (currently the Silo, Field and Barn). It also cannot easily change the distribution of new Bean mints between various Yield Distributors.
+
+Beanstalk cannot support multiple Pod Lines, it cannot easily add, modify or remove Pod Lines and it cannot control the issuance of debt to particular Pod Lines.
+
+Thus, we propose a generalized yield distribution system and Pod Line system. For reference, see [Temp-Check-4](https://snapshot.org/#/beanstalkfarms.eth/proposal/0xc716cb01aeecc01ea4127ace7219e7efe644e8173d228c6b6ff9331c4d373222).
+
+#### L2 Migration
+
+Beanstalk is a fairly gaseous protocol. While the costs of interacting with Beanstalk at the time of writing in May 2024 are reasonable, activity on Ethereum L1 is currently low. In the past when Gwei has reached mid to high double digit values, interacting with Beanstalk (such as Mowing, Planting, or Converting) have cost upwards of several hundred US dollars. This prices out smaller Farmers and reduces the efficacy of Beanstalk's peg maintenance mechanisms.
+
+Thus, we propose a series of initialization scripts that migrate Beanstalk state to an L2 and a facet to allow smart contract addresses to choose an address on the L2 to claim their assets with. For reference, see [Temp-Check-5](https://snapshot.org/#/beanstalkfarms.eth/proposal/0x93dfc538a66c1c199f5c9f0fd9c0233ce3625c7ada9743bafc8b5fbc0fc38fc7).
+
+[//]: # (contest-details-close)
+
+[//]: # (scope-open)
 
 ## Scope
 
@@ -234,41 +270,6 @@ protocol/
             └── Internalizer.sol
 ```
 
-### Changes
-
-The Beanstalk 3 upgrade includes implementations of:
-
-- [RFC: Generalized Convert](https://github.com/BeanstalkFarms/Beanstalk/issues/716);
-- [RFC: Generalized Flood](https://github.com/BeanstalkFarms/Beanstalk/issues/740);
-- [RFC: Tractor](https://github.com/BeanstalkFarms/Beanstalk/issues/734);
-- [RFC: Secure Beanstalk](https://github.com/BeanstalkFarms/Beanstalk/issues/729), which includes:
-  - Upgrading the test suite to support Foundry;
-  - Upgrading the Solidity version of Beanstalk from 0.7.6 to 0.8.20;
-  - Migrating constants to state that are likely to be adjusted by the DAO in the future;
-- Whitelist v1.1 (discussed later);
-- Field V2 (discussed later); and
-- A series of contracts that can be used to migrate Beanstalk's state to an Ethereum L2.
-
-#### Whitelist v1.1
-
-Whitelisting a Well requires code changes to the Beanstalk contracts. While the changes can potentially be minimal, they ultimately increase the friction associated with whitelisting a Well. Ideally, the DAO can whitelist a Well with the `init` function of a diamond cut.
-
-Thus, we propose to implement a generalized oracle, liquidity weight function and Gauge Point function.
-
-#### Field V2
-
-Beanstalk cannot easily add, modify or remove Yield Distributors, i.e., places where new Bean mints are allocated (currently the Silo, Field and Barn). It also cannot easily change the distribution of new Bean mints between various Yield Distributors.
-
-Beanstalk cannot support multiple Pod Lines, it cannot easily add, modify or remove Pod Lines and it cannot control the issuance of debt to particular Pod Lines.
-
-Thus, we propose a generalized yield distribution system and Pod Line system. For reference, see [Temp-Check-4](https://snapshot.org/#/beanstalkfarms.eth/proposal/0xc716cb01aeecc01ea4127ace7219e7efe644e8173d228c6b6ff9331c4d373222).
-
-#### L2 Migration
-
-Beanstalk is a fairly gaseous protocol. While the costs of interacting with Beanstalk at the time of writing in May 2024 are reasonable, activity on Ethereum L1 is currently low. In the past when Gwei has reached mid to high double digit values, interacting with Beanstalk (such as Mowing, Planting, or Converting) have cost upwards of several hundred US dollars. This prices out smaller Farmers and reduces the efficacy of Beanstalk's peg maintenance mechanisms.
-
-Thus, we propose a series of initialization scripts that migrate Beanstalk state to an L2 and a facet to allow smart contract addresses to choose an address on the L2 to claim their assets with. For reference, see [Temp-Check-5](https://snapshot.org/#/beanstalkfarms.eth/proposal/0x93dfc538a66c1c199f5c9f0fd9c0233ce3625c7ada9743bafc8b5fbc0fc38fc7).
-
 ## Compatibilities
 
 Beanstalk implements the [ERC-2535 Diamond standard](https://docs.bean.money/developers/overview/eip-2535-diamond). It supports various whitelists for [Deposits](https://docs.bean.money/almanac/farm/silo#deposit-whitelist), [Minting](https://docs.bean.money/almanac/farm/sun#minting-whitelist), [Converts](https://docs.bean.money/almanac/peg-maintenance/convert#convert-whitelist), etc., particularly for LP tokens from [Basin](https://basin.exchange/).
@@ -282,7 +283,11 @@ Tokens:
 - ERC-20 (all are accepted in Farm balances, a whitelist is accepted on the Deposit Whitelist, etc.)
 - ERC-1155 (Fertilizer and Deposits are ERC-1155 tokens)
 
-## Setup
+[//]: # (scope-close)
+
+[//]: # (getting-started-open)
+
+## Getting Started
 
 Install node version v16.20.0, using nvm or any node version package manager:
 
@@ -332,6 +337,10 @@ To run hardhat tests:
 yarn hardhat test
 ```
 
+[//]: # (getting-started-close)
+
+[//]: # (known-issues-open)
+
 ## Known Issues
 
 All findings in the following resources are considered known issues:
@@ -343,3 +352,5 @@ All findings in the following resources are considered known issues:
   - [Beanstalk Codehawks Part 2](https://www.codehawks.com/report/clu7665bs0001fmt5yahc8tyh); and
   - [Beanstalk Codehawks Part 3](https://www.codehawks.com/contests/clvo5kwin00078k6jhhjobn22).
 - Additional Known Issues as detected by LightChaser available [here](https://github.com/Cyfrin/2024-05-beanstalk-the-finale/issues/1)
+
+[//]: # (known-issues-close)
