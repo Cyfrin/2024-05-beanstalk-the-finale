@@ -1,7 +1,5 @@
 # Beanstalk: The Finale
 
-[//]: # (contest-details-open)
-
 ## Contest Details
 
 - Total Pool - $250,000
@@ -16,6 +14,8 @@
 
 - nSLOC: 12,285
 - Complexity Score: 7810
+
+[//]: # (contest-details-open)  
 
 ## About
 
